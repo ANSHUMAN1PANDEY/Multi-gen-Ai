@@ -1,0 +1,219 @@
+/* Dashboard Layout and Dashboard Overview Styles */
+
+.dashboard-layout {
+  display: flex;
+  min-height: calc(100vh - 70px); /* Fill the screen beneath Navbar */
+  width: 100%;
+  background-color: var(--bg-color);
+}
+
+/* Sidebar Styles */
+.dashboard-sidebar {
+  width: 260px;
+  background-color: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 70px; /* Below Navbar */
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar-header h3 {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.sidebar-nav {
+  padding: 1.5rem 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.nav-group-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  padding-left: 0.75rem;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255,255,255,0.05);
+  color: var(--text-primary);
+}
+
+.sidebar-link.active {
+  background-color: rgba(168, 85, 247, 0.1);
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.sidebar-icon {
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+}
+
+.sidebar-footer {
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.user-profile-sm {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  background: var(--accent-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+
+.user-info .user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.user-info .user-plan {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Dashboard Main Content */
+.dashboard-main {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.dashboard-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Specific overrides for tool pages when inside Dashboard Layout */
+.dashboard-main .tool-page-container {
+  padding: 0;
+  margin: 0;
+}
+
+/* Dashboard Overview Cards */
+.dash-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.dash-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  margin-top: 0.5rem;
+}
+
+.dash-stat-label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .dashboard-sidebar {
+    width: 80px;
+  }
+  
+  .sidebar-header h3,
+  .nav-group-title,
+  .sidebar-link span:not(.sidebar-icon),
+  .user-info {
+    display: none;
+  }
+  
+  .sidebar-link {
+    justify-content: center;
+    padding: 12px;
+  }
+  
+  .sidebar-icon {
+    margin: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+  
+  .dashboard-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+    flex-direction: row;
+    padding: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .sidebar-nav {
+    flex-direction: row;
+    padding: 0.5rem;
+    overflow-x: auto;
+    gap: 0.5rem;
+  }
+  
+  .nav-group {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  
+  .sidebar-footer {
+    display: none;
+  }
+}
